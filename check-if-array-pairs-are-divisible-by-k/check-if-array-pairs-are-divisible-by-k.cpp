@@ -1,17 +1,18 @@
 class Solution {
 public:
     bool canArrange(vector<int>& arr, int k) {
-        unordered_map<int,int> map;
-        for(int i=0; i<arr.size(); i++)
-            arr[i]=(arr[i]%k+k)%k;
+        int map[k+1];
+        for(int i=0; i<k+1; i++) 
+            map[i]=0;
         
-       
-         for(int i=0; i<arr.size(); i++)
-         { if(map[arr[i]]==0)
+        for(int i=0; i<arr.size(); i++)
+        {arr[i]=(arr[i]%k+k)%k;
+          if(map[arr[i]]==0)
                  map[arr[i]]=1;
               else 
-                 map[arr[i]]++;
-         }
+                 map[arr[i]]+=1;
+        }
+       
 
         
         for(int i=0; i<=k/2; i++)
