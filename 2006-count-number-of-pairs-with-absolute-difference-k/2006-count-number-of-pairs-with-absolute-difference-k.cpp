@@ -7,8 +7,8 @@ public:
         
         int c=0;
         for(int x : nums)
-            if(m.count(x+k))
-                c+=m[x+k];
+            if(m.count(x-k))
+                c+=m[x-k];
         
         return c;
     }
