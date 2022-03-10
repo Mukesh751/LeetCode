@@ -8,7 +8,7 @@ public:
             ans.push_back(op);
             return;
         }
-        if(ip[0]=='2')
+        else if(ip[0]=='2')
         {
             ip.erase(ip.begin()+0);
             op.push_back('a');
