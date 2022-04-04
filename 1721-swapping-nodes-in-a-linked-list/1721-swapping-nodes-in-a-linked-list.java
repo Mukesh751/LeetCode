@@ -10,30 +10,36 @@
  */
 class Solution {
     public ListNode swapNodes(ListNode head, int k) {
-          ListNode left = head;
-        ListNode right = head;
-        int cnt = 0;
-		// find the k-th node
-        while (left != null) {
-            cnt++;
-            if (cnt == k) {
-                break;
-            }
-            left = left.next;
+        ListNode start=head;
+        ListNode current=head;
+        ListNode end=head;
+        int t=k;
+        t--;
+        int n=1;
+        while(current.next!=null)
+        {
+            current=current.next;
+            n++;
         }
-
-		// find the k-th last element
-        ListNode pNode = left;
-        while (pNode.next != null) {
-            pNode = pNode.next;
-            right = right.next;
+        current=head;
+        while(t>0)
+        {
+            t--;
+            current=current.next;
         }
-
-		// swap their values.
-        int temp = left.val;
-        left.val = right.val;
-        right.val = temp;
-
+        start=current;
+        t=n-k;
+        current=head;
+        System.out.print(t);
+        while(t>0)
+        {
+            t--;
+            current=current.next;
+        }
+        end=current;
+        int temp = start.val;
+        start.val = end.val;
+        end.val = temp;
         return head;
     }
 }
