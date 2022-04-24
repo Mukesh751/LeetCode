@@ -15,7 +15,7 @@ public:
         if(dp[i][j]!=-1)
             return dp[i][j];
         int mn = INT_MAX;
-        for(int k=i; k<=j-1; k++)
+        for(int k=i; k<=j; k++)
         {
             // int l,r;
             // if(dp[i][k]!=-1)
