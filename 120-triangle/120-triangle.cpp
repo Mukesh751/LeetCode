@@ -10,9 +10,18 @@ public:
         if(dp[row][i]!=-1)
             return dp[row][i];
         
-        int l = triangle[row][i] + recurse(triangle,row+1,i);
-        int r = triangle[row][i] + recurse(triangle,row+1,i+1);
-        sum = min(l,r);
+        int l ;
+        if(dp[row+1][i]!=-1)
+            l=dp[row+1][i];
+        else
+            l =  recurse(triangle,row+1,i);
+        int r ;
+        if(dp[row+1][i+1]!=-1)
+            r=dp[row+1][i+1];
+        else
+            r=  recurse(triangle,row+1,i+1);
+        
+        sum = triangle[row][i] + min(l,r);
         
         dp[row][i]=sum;
         
