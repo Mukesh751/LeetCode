@@ -15,7 +15,15 @@ public:
         int ans=INT_MAX;
         for(int j=1; j<=nums[i];j++)
         {
-            int temp = 1 + recurse(nums,i+j);
+            int l;
+            if(dp[i+j]!=-1)
+                l=dp[i+j];
+            else
+            {
+                l=recurse(nums,i+j);
+                dp[i+j]=l;
+            }
+            int temp = 1 + l;
             ans = min(temp,ans);
         }
         return dp[i]=ans;
