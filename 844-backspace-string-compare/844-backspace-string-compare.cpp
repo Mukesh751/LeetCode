@@ -3,7 +3,7 @@ public:
     bool backspaceCompare(string s, string t) {
         int size = s.size();
         int i = 0;
-        size+=10;
+        size+=5;
         while(size--)
         {   
              while(s[0]=='#')
@@ -20,7 +20,7 @@ public:
         
          size = t.size();
          i = 0;
-        size+=10;
+        size+=5;
         while(size--)
         {
                   
