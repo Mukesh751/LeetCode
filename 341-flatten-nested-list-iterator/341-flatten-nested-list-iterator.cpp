@@ -23,13 +23,13 @@ public:
 
     void recurse(vector<NestedInteger> nestedList)
     {
-          for(auto x : nestedList)
-        {
-            if(x.isInteger())
-                flist.push_back(x.getInteger());
-            else
-                recurse(x.getList());
-        }
+           for(int k=0; k<nestedList.size(); k++)
+          {
+              if(nestedList[k].isInteger())
+                  flist.push_back(nestedList[k].getInteger());
+              else
+                  recurse(nestedList[k].getList());
+          }
     
     }
     
