@@ -1,6 +1,6 @@
 class Solution {
 public:
-     int dp[100];
+     int dp[38];
     int r (int n)
     {
         if(n==3)
