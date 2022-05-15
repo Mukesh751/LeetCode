@@ -16,29 +16,37 @@ public:
     if(list2 == nullptr)
            return list1;
         
-           
-        vector<int> v;
-        ListNode* curr = list1;
-        while(curr != nullptr)
+    ListNode* curr1 = list1;
+    ListNode* curr2 = list2;
+    ListNode* prev = nullptr;
+    
+    while(curr1!=nullptr && curr2!=nullptr)
+    {
+        if(curr1->val <= curr2->val)
         {
-            v.push_back(curr->val);
-            curr = curr->next;
+            prev = curr1;
+            curr1 = curr1->next;
         }
-        curr = list2;
-        while(curr != nullptr)
+        else
         {
-            v.push_back(curr->val);
-            curr = curr->next;
+            ListNode* temp = curr2;
+            curr2 = curr2->next;
+            if(prev == nullptr)
+            {temp->next = curr1;
+             list1 = temp;
+            }
+            else
+            {temp->next = prev->next;
+                prev->next = temp;}
+            prev = temp;
         }
-        sort(v.begin(),v.end());
-        ListNode* ans = new ListNode(v[0]);
-        ListNode* prev = ans;
-        for(int i = 1; i<v.size(); i++)
-        {
-            ListNode* newnode = new ListNode (v[i]);
-             prev->next = newnode;
-            prev = newnode;
-        }
-        return ans;
+    }
+        if(curr2 == nullptr)
+            return list1;
+        
+        curr1 = prev;
+        curr1->next = curr2;
+        
+        return list1;
     }
 };
