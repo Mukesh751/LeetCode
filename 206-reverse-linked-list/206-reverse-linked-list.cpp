@@ -14,23 +14,20 @@ public:
     ListNode* reverseList(ListNode* head) {
         if(head == nullptr || head->next == nullptr)
             return head;
-        
-        vector<int> v;
+
         ListNode* curr = head;
+        ListNode* prev = head;
         while(curr!=nullptr)
         {
-            v.push_back(curr->val);
-            curr=curr->next;
-        }
-        reverse(v.begin(),v.end());
-        ListNode* head1 = new ListNode(v[0]);
-        curr = head1;
-        for(int i=1; i<v.size(); i++)
-        {
-            ListNode* temp = new ListNode(v[i]);
-            curr->next = temp;
+            if(curr == prev)
+            { curr=curr->next;
+               prev->next = nullptr;
+            }
+            ListNode* temp = curr->next;
+            curr->next = prev;
+            prev = curr;
             curr = temp;
         }
-        return head1;
+     return prev;
     }
 };
