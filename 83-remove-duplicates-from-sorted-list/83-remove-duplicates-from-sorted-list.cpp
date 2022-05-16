@@ -15,22 +15,23 @@ public:
         if(head==nullptr || head->next==nullptr)
             return head;
         ListNode* curr = head;
+        ListNode* prev = head;
         while(curr != nullptr)
         {
-            s.insert(curr->val);
-            curr = curr->next;
-        }
-        ListNode* head1 = new ListNode(-1000);
-        curr = head1;
-        for(auto x : s)
-        {
-            ListNode* temp = new ListNode(x);
-            curr->next = temp;
-            curr=temp;
-            if(head1->val == -1000)
-                head1=curr;
+            if(curr == prev)
+                curr=curr->next;
             
+            if(curr->val == prev->val)
+            {
+                prev->next = curr->next;
+                curr = curr->next;
+            }
+            else
+            {
+                prev = curr;
+                curr = curr->next;
+            }
         }
-        return head1;
+        return head;
     }
 };
