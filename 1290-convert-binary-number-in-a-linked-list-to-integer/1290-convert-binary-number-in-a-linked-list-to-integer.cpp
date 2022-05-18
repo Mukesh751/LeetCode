@@ -10,23 +10,20 @@
  */
 class Solution {
 public:
+    void solve(ListNode* head,int &ans,int &i){
+        if(head==NULL)
+            return;
+        solve(head->next,ans,i);
+        ans+= head->val * pow(2,i);
+        i++;
+    }
+    
+    
+    
     int getDecimalValue(ListNode* head) {
-        int n = 0 ;
-        ListNode* curr = head;
-        while(curr != nullptr)
-        {
-            n++;
-            curr = curr->next;
-        }
-        n--;
-        curr = head;
-        int ans = 0;
-        while(curr != nullptr)
-        {
-            ans += curr->val * pow(2,n);
-            curr = curr->next;
-            n--;
-        }
+        int ans=0;
+        int i = 0;
+        solve(head,ans,i);
         return ans;
     }
 };
