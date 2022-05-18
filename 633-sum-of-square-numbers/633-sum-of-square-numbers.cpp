@@ -7,26 +7,32 @@ public:
         
         if(x*x == c)
             return true;
-//         int start = 1;
-//         int end = x;
-//         while(start<end)
-//         {
-//             if(start*start + end*end == c)
-//                 return true;
-            
-//             int mid = (start + end)/2;
-            
-//         }
+
         long long int k = c;
-        for(long long int i = 1; i<=x; i++)
-        {
-            if(i*i + x*x == k)
+        // for(long long int i = 1; i<=x; i++)
+        // {
+        //     if(i*i + x*x == k)
+        //         return true;
+        //     else if(i*i + x*x < k)
+        //         continue;
+        //     else
+        //     {x--; i--;}
+        // }
+        long long int low = 1;
+        long long int high = x;
+         while(low<=high){
+           long sum = (low*low)+(high*high);
+            if(sum==k){
                 return true;
-            else if(i*i + x*x < k)
-                continue;
-            else
-            {x--; i--;}
+            }
+            if(sum>k){
+                high--;
+            }
+            else{
+                low++;
+            }
         }
+        
         return false;
     }
 };
