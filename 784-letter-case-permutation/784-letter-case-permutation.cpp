@@ -15,24 +15,14 @@ public:
             solve(i+1,op);
             return;
          }
-        if(s[i]-'a'>=0 && s[i]-'a'<=25)
-        {
+      
             string temp = op;
-            op.push_back(s[i]);
+            op.push_back(tolower(s[i]));
             solve(i+1,op);
             temp.push_back(toupper(s[i]));
             solve(i+1,temp);
             return;
-        }
-         if(s[i]-'A'>=0 && s[i]-'B'<=25)
-        {
-            string temp = op;
-            op.push_back(s[i]);
-            solve(i+1,op);
-            temp.push_back(tolower(s[i]));
-            solve(i+1,temp);
-             return;
-        }  
+      
     }
     vector<string> letterCasePermutation(string s) {
         this->s = s;
