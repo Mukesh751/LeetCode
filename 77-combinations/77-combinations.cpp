@@ -7,18 +7,18 @@ public:
         if(temp.size()==k)
         {
             ans.push_back(temp);
-            return;
+            
         }
-        if(i>n)
+        else if(i>n)
             return;
-        
-        for(;i<=n; i++)
+        else
+        {  for(;i<=n; i++)
         {
             temp.push_back(i);
             solve(temp,i+1);
             temp.erase(temp.end()-1);
         }
-        return;
+      }
     }
     vector<vector<int>> combine(int n, int k) {
         this->n = n;
