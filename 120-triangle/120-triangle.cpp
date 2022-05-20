@@ -15,6 +15,7 @@ public:
             l=dp[row+1][i];
         else
             l =  recurse(triangle,row+1,i);
+        
         int r ;
         if(dp[row+1][i+1]!=-1)
             r=dp[row+1][i+1];
