@@ -18,12 +18,10 @@ public:
         
          int a ,b ;
        
-        a = solve(amount-coins[i],i);
-       // dp[amount-coins[i]][i] = a;
-         b = solve(amount,i-1);
-       //   dp[amount][i-1] = b;
+        a = 1 + solve(amount-coins[i],i);
         
-        a++;
+         b = solve(amount,i-1);
+
         
         ans = min(a,b);
         return dp[amount][i] = ans;
