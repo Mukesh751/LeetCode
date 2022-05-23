@@ -5,19 +5,15 @@ public:
         if(divisor == -1 && dividend == -2147483648)
           return (dividend-1);
         
-        
-        
         int neg1 = 1, neg2 = 1;
         if(divisor<0)
-        {    neg1 *= (-1);
+        {    neg1 = (-1);
          divisor *= neg1;
         }
         if(dividend<0)
-        {     neg2 *= (-1);
+        {     neg2 = (-1);
         dividend*=neg2;
         }
-        
-      
         
         
         if(divisor == 1)
@@ -29,7 +25,6 @@ public:
             count++;
             dividend-=divisor;    
         }
-        cout<<count<<" "<<neg1<<" "<<neg2;
         
         return count*neg1*neg2;
     }
