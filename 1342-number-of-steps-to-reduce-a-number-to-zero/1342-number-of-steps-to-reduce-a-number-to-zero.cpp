@@ -5,10 +5,10 @@ public:
        if(num == 0)
            return 0;
         int ans = 0;
-        if(num%2 == 0)
-            ans = 1 + numberOfSteps(num/2);
-        else
+        if(num&1)
             ans = 1 + numberOfSteps(num-1);
+        else
+            ans = 1 + numberOfSteps(num>>1);
         
         return ans;
     }
