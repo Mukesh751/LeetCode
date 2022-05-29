@@ -11,7 +11,7 @@ int combinationSum4(vector<int>& nums, int target) {
 int solve(vector<int>& nums,int target,int sum,vector<int>& dp){
          
    if(sum==target){
-      return 1;
+      dp[sum]=1;return 1;
    }
     
    if(sum>target){
