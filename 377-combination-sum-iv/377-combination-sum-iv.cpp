@@ -22,14 +22,13 @@ int solve(vector<int>& nums,int target,int sum,vector<int>& dp){
        return dp[sum];
    }        
        
-   dp[sum]++;
-
+   int res = 0;
    for(int i=0;i<nums.size();i++){
   
-       dp[sum]+=solve(nums,target,sum+nums[i],dp);
+       res+=solve(nums,target,sum+nums[i],dp);
                          
    }  
               
-    return dp[sum];
+    return dp[sum] = res;
 }
 };
