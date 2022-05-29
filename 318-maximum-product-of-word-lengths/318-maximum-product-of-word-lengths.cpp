@@ -33,7 +33,7 @@ public:
     for(string s : words)
     {
         sort(s.begin(),s.end());
-        cout<<s<<" ";
+        // cout<<s<<" ";
         for(char i = 'a'; i<='z'; i++)
         {
             int start = 0;
@@ -49,7 +49,7 @@ public:
                 if(s[mid] == i)
                 {
                     freq[k][i-'a']++;
-                    cout<<i<<" ";
+                    // cout<<i<<" ";
                     break;
                 }
                 if(s[mid]>i)
@@ -60,7 +60,7 @@ public:
             
         }
         k++;
-        cout<<endl;
+        // cout<<endl;
     }
       
     // for(int i =0; i<words.size(); i++)
