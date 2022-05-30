@@ -2,30 +2,28 @@ class Solution {
 public:
     int divide(long long int dividend,long long int divisor) {
       
-        if(divisor == -1 && dividend == -2147483648)
-          return (dividend-1);
+      if(dividend==INT_MIN && divisor==-1) return INT_MAX;
+        if(dividend==INT_MIN && divisor==1) return INT_MIN;
+
         
-        int neg1 = 1, neg2 = 1;
-        if(divisor<0)
-        {    neg1 = (-1);
-         divisor *= neg1;
-        }
-        if(dividend<0)
-        {     neg2 = (-1);
-        dividend*=neg2;
-        }
+    
+        long int dd = abs(dividend), dv = abs(divisor);
         
-        
-        if(divisor == 1)
-          return dividend*neg1*neg2;
-        
-        long long int count = 0;
-        while(dividend-divisor>=0 )
-        {   
-            count++;
-            dividend-=divisor;    
+    
+        int res=0;
+        while(dv<=dd) {
+            long int mul=dv, tmp=1;
+            while(mul<=dd-mul) {
+                mul+=mul;
+                tmp+=tmp;
+            }
+            res+=tmp;
+            dd-=mul;
         }
         
-        return count*neg1*neg2;
+        
+        if((dividend<0&&divisor>0) || (dividend>0&&divisor<0)) return -res;
+        
+        return res;
     }
 };
