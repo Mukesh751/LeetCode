@@ -14,7 +14,13 @@ int f(vector<int>& nums, int  i, int positive){
 	return f(nums, i+1 , 0);
 }
 int wiggleMaxLength(vector<int>& nums) {
-	memset(dp, -1 , sizeof dp);
-	return max(f(nums,0, 1), f(nums, 0, 0));
+	// memset(dp, -1 , sizeof dp);
+	// return max(f(nums,0, 1), f(nums, 0, 0));
+    int inc = 1, dec = 1;
+        for(int i=1; i< nums.size(); i++){
+            if(nums[i] > nums[i-1]) inc = dec+1;
+            else if(nums[i] < nums[i-1]) dec = inc+1;
+        }
+        return max(inc, dec);
 }
 };
