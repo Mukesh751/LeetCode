@@ -4,7 +4,7 @@ public:
        if(s.size() < 10)  
             return {};
         
-        unordered_map<string, int> m;  
+        map<string, int> m;  
         vector<string> st;  
         for(int i = 0; i+9 < s.size(); i++){
             m[s.substr(i, 10)]++;  
