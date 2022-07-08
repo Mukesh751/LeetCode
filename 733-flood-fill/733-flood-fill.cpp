@@ -23,8 +23,6 @@ public:
     
     vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int newColor) {
         
-        cout<<image.size()<<" "<<image[0].size();
-        
         if(image[sr][sc] == newColor)
             return image;
         
