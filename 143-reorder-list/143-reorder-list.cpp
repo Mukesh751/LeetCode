@@ -10,83 +10,41 @@
  */
 class Solution {
 public:
-  ListNode* findMid(ListNode* head){
+    void f(ListNode*& one, ListNode* two){
+       
+       if(two == NULL) return;
+       
+       
+       f(one, two->next);
+       
+       
+       if(one == NULL || one->next == NULL) return;
+       
+       if(one == two){
+           one->next = NULL;
+           return;
+       }
+       
+       
+       ListNode* temp = one->next;
+       
+      
+       
+       one->next = two;
+       
+       two->next = NULL;
+       
+       if(two != temp){
+           two->next = temp;
+       }
+       
+       one = temp;
+   }
     
-    ListNode* slow = head;
-    ListNode* fast = head;
     
-    while(fast and fast->next){
+    void reorderList(ListNode* head) {
         
-        slow = slow->next;
-        fast = fast->next->next;
-    }
-    
-    
-    return slow;
-}
-
-ListNode* reverseList(ListNode* head){
-    
-    ListNode* pre = NULL;
-    ListNode* curr = head;
-    ListNode* nex = head;
-    
-    while(nex){
-        
-        nex = nex->next;
-        curr->next = pre;
-        pre = curr;
-        curr = nex;
-    }
-    
-    return pre;
-    
-}
-
-
-void mergeList(ListNode* head1, ListNode* head2){
-    
-    ListNode* temp = head1;
-    head1 = head1->next;
-    
-    bool flag = false;
-    
-    while(head1 and head2){
-        
-        if(flag){
-            
-            temp->next = head1;
-            head1 = head1->next;
-            
-        }
-        else{
-            temp->next = head2;
-            head2 = head2->next;
-        }
-        
-        temp = temp->next;
-        flag = !flag;
+       f(head, head);
         
     }
-    
-    if(head1){
-        temp->next = head1;
-    }
-    else{
-        temp->next = head2;
-    }
-}
-
-
-void reorderList(ListNode* head) {
-    
-    ListNode* mid = findMid(head);
-    
-    ListNode* head1 = head;
-    ListNode* head2 = reverseList(mid->next);
-    mid->next = NULL;
-    
-    mergeList(head1, head2);
-    
-}
 };
