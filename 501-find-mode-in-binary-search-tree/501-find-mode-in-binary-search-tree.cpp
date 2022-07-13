@@ -11,38 +11,41 @@
  */
 class Solution {
 public:
-    map<int,int> m;
+   vector<int>result;
+    int maxFreq=0,current=0,freq=0;
     
-    void solve(TreeNode* root){
-        if(root == nullptr)
-            return;
-        
-        m[root->val]++;
-        solve(root->left);
-        solve(root->right);
-    }
     vector<int> findMode(TreeNode* root) {
         
-        solve(root);
-        vector<pair<int,int>> v;
-        for(auto x : m)
-           v.push_back(x);
+       if(!root)
+            return result;
+  
+       findMode(root->left);
         
-        sort(v.rbegin(),v.rend(),[](auto &l , auto &r){
-           return l.second < r.second ;   
-        });
+    
+       if(current!=root->val)
+       {
+           freq=1;
+           current=root->val;
+       }
+
+       else if(current==root->val)
+       {
+         freq++;   
+       }
+       if(freq>maxFreq)
+       {
+           maxFreq=freq;
+           result={current};
+           
+       }
+        else if(freq==maxFreq)
+        {
+            result.push_back(current);
+        }
         
-        // for(auto x : v){
-        //     cout<<x.first<<" "<<x.second;
-        //     cout<<endl;
-        // }
-        int mx = v[0].second;
-        vector<int> ans;
-        ans.push_back(v[0].first);
-        int i = 1;
-        while(i<v.size() && v[i].second == mx){
-            ans.push_back(v[i].first);
-            i++;}
-        return ans;
+       findMode(root->right);
+        
+         return result;
     }
+   
 };
