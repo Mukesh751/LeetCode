@@ -7,7 +7,7 @@ public:
             return;
         
         index=(k+index)%x.size();
-        cout<<x[index]<<" ";
+        
         x.erase(x.begin()+index);
         
         recurse(x,k,index);
