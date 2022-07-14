@@ -18,8 +18,6 @@ public:
         int mid = (l+r)/2;
         
         TreeNode* root = new TreeNode(nums[mid]);
-        // TreeNode* le = 
-        // TreeNode* ri = 
         root->left = solve(l,mid-1);
         root->right = solve(mid+1,r);
         return root;
