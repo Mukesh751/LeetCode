@@ -11,8 +11,8 @@ public:
         for(auto x : s)
             nums.push_back(x);
         
-        while(nums.size()<n)
-            nums.push_back(nums[0]);
+        // while(nums.size()<n)
+        //     nums.push_back(nums[0]);
         
         return ans;
     }
