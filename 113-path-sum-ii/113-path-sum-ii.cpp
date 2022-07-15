@@ -23,10 +23,12 @@ public:
         
         if(sum == target && root->left == nullptr && root->right == nullptr){
             ans.push_back(v);
+            v.pop_back();
             return;
         }
         solve(root->left,v,sum);
         solve(root->right,v,sum);
+        v.pop_back();
     }
     vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
         target = targetSum;
