@@ -27,19 +27,10 @@ public:
     }
     bool search(vector<int>& nums, int target) {
        
-        map<int,int> m;
-        for(auto x : nums){
-            m[x]++;
-        }
-        nums.clear();
-        for(auto x : m){
-            nums.push_back(x.first);
-        }
-        int x = s(nums,target);
+       for(auto x : nums)
+           if(x == target)
+               return true;
         
-        if(x == -1)
-            return false;
-        
-        return true;
+        return false;
     }
 };
