@@ -1,25 +1,45 @@
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
-        sort(nums.begin(),nums.end()); 
-        vector<vector<int>> res;
-        for(int i=0;i<nums.size();i++){
-            if(i>0 && nums[i]==nums[i-1]) continue; // taking i only one time, the first occurence so that no duplicates
-            int l=i+1, r = nums.size()-1;
-            while(l<r){
-                int s = nums[i]+nums[l]+nums[r];
-                if(s>0) r--; // if sum>0, right-- or left++ otherwise push in vector
-                else if(s<0) l++;
-                else{
-                    res.push_back(vector<int>{nums[i],nums[l],nums[r]});
-                    while(l+1 < nums.size() && nums[l]==nums[l+1]) l++;// to remove duplicates
-                    while(r-1 >= 0 && nums[r]==nums[r-1]) r--;//to remove duplicates
-                    l++;
-                    r--;
-                }
-            }
-        }
-        return res;
+        int n=nums.size();
+        int twosum=0;
+        vector<vector<int>>ans;
+        sort(nums.begin(),nums.end());
+        for(int i=0;i<n;i++){
+        int target=0-nums[i];
+        int low=i+1;
+        int high=n-1;
 
+        while(low<high){
+            twosum=nums[low]+nums[high];
+            if(twosum>target){
+                high--;
+            }
+            else if(twosum<target){
+                low++;
+            }
+            else{
+                vector<int>t(3,0);
+                t[0]=nums[i];
+                t[1]=nums[low];
+                t[2]=nums[high];
+                ans.push_back(t);
+            
+            
+            while(low<high && t[1]==nums[low])
+                low++;
+            
+            
+            while(low<high && t[2]==nums[high])
+                high--;
+            
+           }
+        }
+        while(i+1<n && nums[i]==nums[i+1])
+            i++;
+        
+    }
+    
+        return ans;
     }
 };
