@@ -2,11 +2,10 @@ class Solution {
 public:
     
     void dfs(vector<vector<int>> v, int i, vector<bool>& vis){
+        vis[i] = true;
         for(int j = 0; j<v.size(); j++){
             if(v[i][j] && vis[j] == false)
-            {vis[j] = true;
              dfs(v,j,vis);
-            }
         }
     }
     
