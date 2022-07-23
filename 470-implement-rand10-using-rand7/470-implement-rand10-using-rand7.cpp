@@ -5,11 +5,20 @@
 class Solution {
 public:
     int rand10() {
-         int sum=0;
-        for(int i=0;i<5;i++)
-        {
-            sum += rand7();
+         vector<vector<int>> vals = {
+        { 1, 2, 3, 4, 5, 6, 7 },
+        { 8, 9, 10, 1, 2, 3, 4 },
+        { 5, 6, 7, 8, 9, 10, 1}, 
+        { 2, 3, 4, 5, 6, 7, 8}, 
+        { 9, 10, 1, 2, 3, 4, 5}, 
+        { 6, 7, 8, 9, 10, 0, 0}, 
+        { 0, 0, 0, 0, 0, 0, 0}
+    };
+        int i = 0; 
+        while(i == 0) { 
+            i = vals[rand7()-1][rand7()-1];
         }
-        return (sum%10)+1;
+        
+        return i;
     }
 };
