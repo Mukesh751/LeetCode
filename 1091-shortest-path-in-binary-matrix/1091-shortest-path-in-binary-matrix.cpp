@@ -1,38 +1,58 @@
 class Solution {
 public:
-   bool isValid(int r, int c, vector<vector<int>> &grid , int m , int n){
-    if(r>=0 && c>=0 && r<=m && c<=n && grid[r][c]==0)
-        return true;
-    return false;
-}
-int shortestPathBinaryMatrix(vector<vector<int>>& grid) {
-    if(grid[0][0]==1)
-        return -1;
-    vector<vector<int>> dir = {{0,-1},{0,1},{-1,0},{1,0},{-1,-1},{-1,1},{1,-1},{1,1}};
-    queue<pair<int,int>> q;
-    q.push({0,0});
-    grid[0][0]=1;
-    int res=0;
-    int m=grid.size()-1;
-    int n=grid[0].size()-1;
-    while(!q.empty()){
-        int ls=q.size();
-        res++;
-        for(int i=0;i<ls;i++){
-            pair<int,int>p=q.front();
-            q.pop();
-            if(p.first==m && p.second==n)
-                return res;
-            for(int j=0;j<dir.size();j++){
-                int r=p.first+dir[j][0];
-                int c=p.second+dir[j][1];
-                if(isValid(r,c,grid,m,n)){
-                    q.push({r,c});
-                    grid[r][c]=1;
-                }
+   void dfs(int u,int v,vector<vector<int>>& g,vector<vector<int>>& dist)
+    {
+        int n=g.size(),m=g[0].size();
+        
+        int d0=dist[u][v];
+        
+       for (int x = -1; x <= 1; x++) {
+            for (int y = -1; y <= 1; y++) {
+                if (x == 0 && y == 0)
+                    continue;   
+            
+                int i=u+x,j=v+y;
+                
+                
+                
+            if(i>=0 && i<n && j>=0 && j<m)
+            {  if(g[i][j]==1)continue;
+             
+                int d1=dist[i][j];
+            
+            if(d0-1>d1)//checking if it is minimum for u,v
+            {
+                dist[u][v]=d1+1;
+                dfs(u,v,g,dist);
             }
+                else if(d0<d1-1){//checking if it is minimum for i,j
+                    dist[i][j]=d0+1;
+                    dfs(i,j,g,dist);
+                }
+             
+            }
+        
         }
+           
+       }
+       
     }
-    return -1;
+    
+    int shortestPathBinaryMatrix(vector<vector<int>>& g) {
+        
+        int i,j,n=g.size(),m=g[0].size();
+        
+        vector<vector<int>>dist(n,vector<int>(m,INT_MAX));//dist from ,i,j, to 0,0
+        
+        dist[0][0]=1;
+        
+            if(g[0][0]==1 || g[n-1][m-1]==1)
+            {
+                return -1;
+            }
+        
+        dfs(0,0,g,dist);
+        
+        return dist[n-1][m-1]==INT_MAX ? -1:dist[n-1][m-1];
 }
 };
