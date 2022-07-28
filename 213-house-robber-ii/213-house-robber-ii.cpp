@@ -38,7 +38,6 @@ public:
         
         int r = solve(1,nums.size()-1,nums);
         
-        cout<<l<<" "<<r;
         return max(l,r);
         //return r;
     }
