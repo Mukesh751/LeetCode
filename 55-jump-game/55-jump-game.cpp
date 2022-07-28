@@ -5,19 +5,16 @@ public:
     
     bool canJump(vector<int>& nums) {
         
-         int j=0,maxnum=0;
-        if(nums.size()==1)
-            return true;
-        for(int i=0;i<nums.size()-1;i++){
-            j=i+nums[i]; 
-            maxnum = max(j,maxnum);  
-            if(maxnum>=nums.size()-1)
-                return true;
-            if(nums[i]==0 && maxnum==i){ 
-                break;                
+       int jump = nums.size() - 1;
+        
+        int i = jump - 1;
+        while(i >= 0) {
+            if (i + nums[i] >= jump) {
+                jump = i;
             }
+            --i;
         }
-        return false;
+        return jump == 0;
     }
     
 };
