@@ -17,7 +17,7 @@ public:
      int pick =nums[n]+solve(i,n-2,nums);
      int notpick=0+solve(i,n-1,nums);
 
-        cout<<pick<<" "<<notpick<<endl;
+    
     return dp[n]=max(pick,notpick);  
 }
    
