@@ -17,26 +17,8 @@ public:
         int mn = INT_MAX;
         for(int k=i; k<=j; k++)
         {
-            // int l,r;
-            // if(dp[i][k]!=-1)
-            //     l=dp[i][k];
-            // else
-            // {
-            //     l=solve(s,i,k);
-            //     dp[i][k]=l;
-            // }
-            // if(dp[k+1][j]!=-1)
-            //     r=dp[k+1][j];
-            // else
-            // {
-            //     r=solve(s,k+1,j);
-            //     dp[k+1][j]=r;
-            // }
-            
-            //int temp ;
             if(isp(s,i,k))
                 mn = min(mn,1+solve(s,k+1,j));
-           // mn=min(mn,temp);
         }
         return dp[i][j]=mn;
     }
