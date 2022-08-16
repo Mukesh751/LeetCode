@@ -1,7 +1,7 @@
 class Solution {
 public:
- template <class T> static bool sortbysec( T a,
-                T b)
+   static bool sortbysec( pair<int,string> &a,
+                pair<int,string> &b)
 {
     return (a.second < b.second);
 }
@@ -18,7 +18,7 @@ public:
              sort(vp[i].second.begin(),vp[i].second.end());
         
         //sort(strs.begin(),strs.end());
-       sort(vp.begin(), vp.end(), sortbysec<pair<int,string>>);
+        std::sort(vp.begin(), vp.end(), sortbysec);
         for(auto x: vp)
             cout<<x.first<<" "<<x.second<<endl;
         
