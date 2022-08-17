@@ -35,19 +35,33 @@ public:
 //             }
 //         }
 //         return false;
-        int m = matrix.size();
-        int n= matrix[0].size();
-        auto i = upper_bound(matrix[0].begin(), matrix[0].end(), target) - matrix[0].begin();
+//         int m = matrix.size();
+//         int n= matrix[0].size();
+//         auto i = upper_bound(matrix[0].begin(), matrix[0].end(), target) - matrix[0].begin();
         
     
         
-        bool ans = false;
-        for(int j=0;j<m ;j++){
-           if( binary_search(matrix[j].begin(), matrix[j].begin()+i, target)){
-               ans = true;
-           }
+//         bool ans = false;
+//         for(int j=0;j<m ;j++){
+//            if( binary_search(matrix[j].begin(), matrix[j].begin()+i, target)){
+//                ans = true;
+//            }
+//         }
+        
+       int m = matrix.size(), n = matrix[0].size();
+        int r = m - 1, c = 0;
+        
+        while (r >= 0 && c < n)
+        {
+            if (matrix[r][c] == target)
+                return true;
+            
+            if (matrix[r][c] < target)
+                c++;
+            else
+                r--;
         }
         
-        return ans;
+        return false;
     }
 };
