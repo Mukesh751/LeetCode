@@ -8,7 +8,7 @@ public:
         return true;
     }
     vector<int> findAnagrams(string s, string p) {
-               vector<int> mp1(26,0),mp2(26,0);
+        vector<int> mp1(26,0),mp2(26,0);
         int m=s.size(),n=p.size();
         vector<int> ans;
         for(int i=0;i<n;i++)
