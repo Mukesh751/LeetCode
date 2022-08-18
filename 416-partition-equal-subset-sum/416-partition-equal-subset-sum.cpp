@@ -21,7 +21,6 @@ public:
             bool incl = solve(nums,sum-nums[n-1],n-1);
             bool excl = solve(nums,sum,n-1);
             
-
             return dp[sum][n] = incl || excl;
         }
         else{
