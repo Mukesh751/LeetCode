@@ -1,6 +1,6 @@
 class Solution {
 public:
-       int x[4]={-1,0,1,0};
+    int x[4]={-1,0,1,0};
     int y[4]={0,1,0,-1};
     
     void dfs(vector<vector<char>>& grid,int i,int j){
