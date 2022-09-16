@@ -1,30 +1,16 @@
 class Solution {
 public:
-    int sum = INT_MIN;
-    int m,n;
-    int dp[1001][1001];
-    vector<int> nv,mv;
-    
-    int recurse(int i, int l)
-    {
-        if(i==m)
-            return 0;
-        
-        int r = n-1-i+l;
-        if(dp[i][l]==0)
-            dp[i][l] = max(mv[i]*nv[l] + recurse(i+1,l+1), mv[i]*nv[r] + recurse(i+1,l));
-        
-        return dp[i][l];
+  vector<vector<int>> dp;
+    int solve(int i, int n, int j, vector<int> &nums, vector<int> &multipliers){
+        if (j == multipliers.size()) return 0;
+        if (dp[i][j] != INT_MIN) return dp[i][j];
+        int left = solve(i + 1, n, j + 1, nums, multipliers) + (nums[i] * multipliers[j]);
+        int right = solve(i, n, j + 1, nums, multipliers) + (nums[(n - 1) - (j - i)] * multipliers[j]);
+        return dp[i][j] = max(left, right);
     }
-    int maximumScore(vector<int>& nums, vector<int>& multipliers) {
-        
-        m=multipliers.size();
-        nv=nums;
-        mv=multipliers;
-        memset(dp,0,sizeof(dp));
-        n=nums.size();
-        
-        return recurse(0,0);
-        
+    int maximumScore(vector<int>& nums, vector<int>& multipliers) {   
+        int n = nums.size(), m = multipliers.size();
+        dp.resize(m + 1, vector<int>(m + 1, INT_MIN));
+        return solve(0, n, 0, nums, multipliers);
     }
 };
