@@ -1,14 +1,7 @@
 class Solution {
 public:
     string pushDominoes(string dominoes) {
-        vector<int> lpos;
-        vector<int> rpos;
-        for(int i = 0; i<dominoes.size(); i++){
-            if(dominoes[i] == 'L')
-                lpos.push_back(i);
-            if(dominoes[i] == 'R')
-                rpos.push_back(i);
-        }int n=dominoes.size();
+        int n=dominoes.size();
         string str="";
         int i=0,j=n-1;
         vector<int> l(n,0);  
